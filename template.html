@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>วิเคราะห์สเปกและราคาคอมพิวเตอร์โน้ตบุ๊ก</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5fb;--card:rgba(255,255,255,.82);--ink:#0b1220;--mut:#55647a;--line:rgba(20,40,80,.14);--a:#0a7ea4;--b:#d97706;--ok:#0f8a4b;--grid:rgba(20,50,100,.05);--glow:rgba(10,126,164,.22);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#060a14;--card:rgba(16,24,46,.72);--ink:#e8f0ff;--mut:#93a4c3;--line:rgba(120,160,255,.2);--a:#22d3ee;--b:#fbbf24;--ok:#34d399;--grid:rgba(120,160,255,.06);--glow:rgba(34,211,238,.28);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#060a14;--card:rgba(16,24,46,.72);--ink:#e8f0ff;--mut:#93a4c3;--line:rgba(120,160,255,.2);--a:#22d3ee;--b:#fbbf24;--ok:#34d399;--grid:rgba(120,160,255,.06);--glow:rgba(34,211,238,.28);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;color:var(--ink);font:400 15px/1.55 "IBM Plex Sans Thai",system-ui,sans-serif;font-variant-numeric:tabular-nums}
+main{max-width:1120px;margin:0 auto;padding:20px 16px 44px}
+.hero{position:relative;background:#070d1d;color:#eaf2ff;border:1px solid rgba(120,160,255,.25);border-radius:24px;padding:26px 28px 22px;margin-bottom:16px;box-shadow:0 18px 50px -20px rgba(34,211,238,.4)}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#67e8f9;margin-bottom:6px}
+h1{font-size:clamp(24px,4.4vw,38px);margin:0 0 8px;font-weight:600;line-height:1.35;background:linear-gradient(90deg,#fff,#67e8f9 60%,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:48px}
+.hero p{color:#a9b9d8;margin:0 0 18px;max-width:62ch}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{border:1px solid rgba(120,160,255,.22);border-radius:16px;padding:12px 14px;background:rgba(255,255,255,.04)}
+.kpi b{display:block;font-size:26px;color:#67e8f9;font-weight:600;line-height:1.25;text-shadow:0 0 18px rgba(34,211,238,.5)}.kpi span{font-size:13px;color:#a9b9d8}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.nav a{color:#eaf2ff;border:1px solid rgba(120,160,255,.3);border-radius:999px;padding:5px 14px;font-size:13px;cursor:pointer;text-decoration:none}.nav a:hover,.nav a:focus-visible{background:rgba(34,211,238,.16);border-color:#67e8f9;outline:none}
+.th{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(120,160,255,.35);background:rgba(255,255,255,.06);color:#eaf2ff;font-size:17px;cursor:pointer;padding:0}.th:hover,.th:focus-visible{border-color:#67e8f9;outline:none}
+.card{background:var(--card);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:22px;padding:18px 20px;margin-bottom:16px;min-width:0;transition:box-shadow .2s}.card:hover{box-shadow:0 14px 40px -18px var(--glow)}
+.card h2{font-size:19px;margin:0 0 4px;font-weight:600;display:flex;align-items:center;gap:10px}
+.qb{font-style:normal;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--bg);background:var(--a);border-radius:8px;padding:3px 10px;box-shadow:0 0 14px var(--glow)}
+.q{color:var(--mut);font-size:13px;margin:0 0 12px}
+.take{margin:12px 0 0;padding:10px 14px;border-left:4px solid var(--b);background:rgba(127,127,127,.1);border-radius:10px;font-size:14px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}.two .card{margin-bottom:0}.two{margin-bottom:16px}
+svg{width:100%;height:auto;display:block}svg text{fill:var(--mut);font-size:11px;font-family:inherit}
+.row{display:grid;grid-template-columns:104px 1fr 64px;gap:8px;align-items:center;margin:5px 0;font-size:13px}
+.row .t{background:var(--line);height:14px;border-radius:7px;overflow:hidden}.row i{display:block;height:100%;background:var(--a);border-radius:7px}.row em{font-style:normal;text-align:right;color:var(--mut)}
+.ctl{display:flex;flex-wrap:wrap;gap:16px;align-items:end;margin-bottom:14px}
+label{display:flex;flex-direction:column;font-size:13px;color:var(--mut);gap:4px}
+select,input{font:inherit;color:var(--ink)}select{background:rgba(127,127,127,.12);border:1px solid var(--line);border-radius:10px;padding:7px 10px;min-width:200px}
+input[type=range]{accent-color:var(--a)}
+select:focus-visible,input:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.rec{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.rc{border:1px solid var(--line);border-radius:16px;padding:12px 14px;font-size:13px;background:rgba(127,127,127,.06)}.rc.f{border-color:var(--ok);box-shadow:0 0 0 1px var(--ok),0 0 26px -8px var(--ok)}
+.rc b{font-size:22px;display:block}.rc small{color:var(--ok);font-weight:600}.rc span{color:var(--mut);display:block}
+.leg{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--mut)}.leg s{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;text-decoration:none}
+footer{color:var(--mut);font-size:12px;text-align:center}
+.hit{cursor:pointer}.hit:hover{fill:var(--b)!important;fill-opacity:.1!important}svg [data-k]{cursor:pointer}svg [data-k]:focus-visible,.row.b:focus-visible,.clr:focus-visible{outline:2px solid var(--a);outline-offset:1px}
+svg text,svg line{pointer-events:none}
+.info{margin-top:12px;padding:10px 14px;border:1px solid var(--line);border-left:4px solid var(--a);border-radius:12px;font-size:14px;min-height:46px;background:rgba(127,127,127,.07)}.info small{color:var(--mut)}.hint{color:var(--mut)}
+.clr{font:inherit;font-size:12px;color:var(--ink);background:none;border:1px solid var(--line);border-radius:999px;padding:2px 10px;cursor:pointer;margin-left:6px}
+.row.b{cursor:pointer;padding:3px 6px;border-radius:10px}.row.b:hover{background:rgba(127,127,127,.1)}.row.b.on{background:rgba(127,127,127,.1);outline:2px solid var(--b)}
+.seg{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 10px}.seg button{font:inherit;font-size:13px;color:var(--ink);background:none;border:1px solid var(--line);border-radius:999px;padding:3px 13px;cursor:pointer}.seg button.on{background:var(--a);color:var(--bg);border-color:var(--a);box-shadow:0 0 14px var(--glow)}.seg button:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<div class="hero"><button class="th" id="th" aria-label="สลับโหมดสว่าง / มืด" title="สลับโหมดสว่าง / มืด">◐</button>
+<div class="eyebrow">Laptop Price Analysis · Data Visualization</div>
+<h1>วิเคราะห์สเปกและราคาคอมพิวเตอร์โน้ตบุ๊ก</h1>
+<p>เราจะช่วยให้ผู้ซื้อวิเคราะห์เปรียบเทียบสเปกและราคาแล็ปท็อป เพื่อเลือกรุ่นที่คุ้มค่าที่สุดได้อย่างมั่นใจ</p>
+<div class="kpis" id="kpis"></div>
+<nav class="nav"><a data-t="s1" tabindex="0" role="button">Q1 RAM กับราคา</a><a data-t="s2" tabindex="0" role="button">Q2 ประเภท</a><a data-t="s3" tabindex="0" role="button">Q3 แบรนด์</a><a data-t="s4" tabindex="0" role="button">Q4 แนะนำรุ่น</a></nav></div>
+
+<section class="card" id="s1"><h2><i class="qb">Q1</i>RAM ส่งผลต่อราคามากน้อยแค่ไหน?</h2><p class="q">กราฟกระจาย: หนึ่งจุดคือ 1 รุ่น เส้นสีส้มคือราคากลาง สัญลักษณ์ ◇ คือราคาเฉลี่ย ของแต่ละขนาด RAM คลิกเพื่อดูรายละเอียดของแต่ละขนาด</p><div id="q1"></div><div class="leg"><span><s style="background:var(--b);border-radius:2px;width:18px;height:3px;vertical-align:middle"></s>ราคากลาง (median)</span><span>◇ ราคาเฉลี่ย (mean)</span></div><div class="info" id="i1"></div><p class="take" id="t1"></p></section>
+
+<div class="two">
+<section class="card" id="s2"><h2><i class="qb">Q2</i>แต่ละประเภทมีช่วงราคาต่างกันอย่างไร?</h2><p class="q">Box plot: เส้นบางคือต่ำสุด–สูงสุด กล่องคือครึ่งกลางของรุ่นทั้งหมด ขีดสีส้มคือราคากลาง คลิกที่แถวเพื่อดูรายละเอียด</p><div id="q2"></div><div class="info" id="i2"></div><p class="take" id="t2"></p></section>
+<section class="card"><h2>สัดส่วนประเภทโน้ตบุ๊กในตลาด</h2><p class="q">จากทั้งหมด <span id="n"></span> รุ่น</p><div id="pie"></div></section>
+</div>
+
+<section class="card" id="s3"><h2><i class="qb">Q3</i>แบรนด์ไหนคุ้มค่าเมื่อสเปกเท่ากัน?</h2><p class="q">เทียบเฉพาะรุ่น Core i5 + RAM 8 GB เท่ากัน (แสดงแบรนด์ที่มีอย่างน้อย 5 รุ่น) เลือกวัดค่าได้ 3 แบบ ค่ายิ่งต่ำ ยิ่งคุ้ม คลิกที่แท่งเพื่อดูรายละเอียด</p><div class="seg" id="m3"></div><div id="q3"></div><div class="info" id="i3"></div><p class="take" id="t3"></p></section>
+
+<section class="card" id="s4"><h2><i class="qb">Q4</i>ควรเลือกรุ่นไหนให้ตรงงานและอยู่ในงบ?</h2><p class="q">เลือกงบและการใช้งาน ระบบจะแสดงรุ่นที่ราคาอยู่ในช่วง 70–100% ของงบ และเรียง 5 อันดับที่ให้สเปกต่อราคาดีที่สุด (เพิ่มงบ จะได้สเปกที่สูงขึ้น)</p>
+<div class="ctl"><label>การใช้งาน<select id="u"><option value="0">เรียน / ทำเอกสาร (RAM ≥ 8 GB)</option><option value="1">กราฟิก / ตัดต่อ (RAM ≥ 16 GB, Core i7)</option><option value="2">เล่นเกม (ประเภท Gaming, RAM ≥ 8 GB)</option></select></label>
+<label>งบประมาณ: <b id="bv"></b><input type="range" id="bg" min="300" max="4000" step="50" value="1000"></label></div>
+<div class="rec" id="rec"></div>
+<p class="q" style="margin-top:10px">คะแนนสเปก = RAM + ระดับ CPU + มี SSD + น้ำหนักเบา ใช้เพื่อเรียงลำดับเท่านั้น ไม่ใช่ผลทดสอบประสิทธิภาพจริง</p></section>
+<footer>ข้อมูล: Laptop Price (Kaggle) 1,303 รุ่น ราคาเป็นยูโร (€)</footer>
+</main>
+<script>
+const D=__DATA__,C=D.c,T=D.t,P=D.p,F=D.f,R=D.rows; // row:[co,type,ram,inch,kg,price,prod,cpu,ssd]
+const $=i=>document.getElementById(i),fmt=n=>'€'+Math.round(n).toLocaleString('en-US');
+const col=['#22d3ee','#a78bfa','#f472b6','#fbbf24','#34d399','#94a3b8'];
+const q=(s,p)=>{const i=(s.length-1)*p,l=Math.floor(i);return s[l]+(s[Math.min(l+1,s.length-1)]-s[l])*(i-l)};
+const sorted=a=>[...a].sort((x,y)=>x-y),by=(rows,k)=>{const m={};rows.forEach(r=>(m[r[k]]=m[r[k]]||[]).push(r[5]));return m};
+const pr=R.map(r=>r[5]);
+$('kpis').innerHTML=[[R.length.toLocaleString('en-US'),'รุ่นทั้งหมด'],[C.length,'ยี่ห้อ'],[fmt(q(sorted(pr),.5)),'ราคากลาง'],[fmt(Math.min(...pr))+' – '+fmt(Math.max(...pr)),'ช่วงราคา']].map(([a,b])=>`<div class="kpi"><b>${a}</b><span>${b}</span></div>`).join('');
+$('n').textContent=R.length;
+// ---------- interactive helpers ----------
+const stats=a=>{const s=sorted(a);return{n:s.length,min:s[0],q1:q(s,.25),md:q(s,.5),q3:q(s,.75),max:s[s.length-1]}};
+const nm=r=>C[r[0]]+' '+P[r[6]];
+const modelLine=rows=>{const s=[...rows].sort((a,b)=>a[5]-b[5]),lo=s[0],hi=s[s.length-1];return `ถูกสุด: ${nm(lo)} ${fmt(lo[5])} · แพงสุด: ${nm(hi)} ${fmt(hi[5])}`};
+const hint=t=>`<span class="hint">👆 ${t}</span>`,clr=' <button class="clr" data-k="clr">ล้างการเลือก</button>';
+function bind(el,fn){const h=e=>{const t=e.target.closest('[data-k]');if(t)fn(t.dataset.k)};el.addEventListener('click',h);el.addEventListener('keydown',e=>{if((e.key=='Enter'||e.key==' ')&&e.target.dataset&&e.target.dataset.k){e.preventDefault();h(e)}})}
+let S1=null,S2=null,S3=null;
+// ---------- Q1 ----------
+const byRam={};R.forEach(r=>(byRam[r[2]]=byRam[r[2]]||[]).push(r));
+const rams=Object.keys(byRam).map(Number).sort((a,b)=>a-b),W=700,H=300,m={l:48,r:10,t:10,b:30},cw=(W-m.l-m.r)/rams.length;
+const xs=i=>m.l+(i+.5)*cw,ys=v=>H-m.b-v/6200*(H-m.t-m.b),md1=v=>q(sorted(byRam[v].map(r=>r[5])),.5),mn1=v=>byRam[v].reduce((s,r)=>s+r[5],0)/byRam[v].length;
+function draw1(){
+let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="ราคาตามขนาด RAM">`;
+for(let v=0;v<=6000;v+=1500)s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${ys(v)}" y2="${ys(v)}" stroke="var(--line)"/><text x="${m.l-6}" y="${ys(v)+4}" text-anchor="end">€${v}</text>`;
+rams.forEach((v,i)=>{s+=`<rect data-k="${v}" tabindex="0" role="button" aria-label="ดูรายละเอียด RAM ${v} GB" class="hit" x="${xs(i)-cw/2}" y="${m.t}" width="${cw}" height="${H-m.t-m.b}" fill="${S1===v?'var(--b)':'transparent'}" fill-opacity="${S1===v?.16:0}"/>`});
+R.forEach(r=>{const i=rams.indexOf(r[2]),o=S1==null?.45:(r[2]==S1?.85:.1);s+=`<circle data-k="${r[2]}" cx="${xs(i)+((r[6]*37%100)-50)/100*38}" cy="${ys(r[5])}" r="3" fill="var(--a)" fill-opacity="${o}"><title>${nm(r)}: ${fmt(r[5])}</title></circle>`});
+rams.forEach((v,i)=>{const md=md1(v),on=S1===v;s+=`<line x1="${xs(i)-24}" x2="${xs(i)+24}" y1="${ys(md)}" y2="${ys(md)}" stroke="var(--b)" stroke-width="3" opacity="${S1==null||on?1:.3}"/><text x="${xs(i)}" y="${H-10}" text-anchor="middle" style="${on?'font-weight:600;fill:var(--ink)':''}">${v} GB</text>`;if(on)s+=`<text x="${xs(i)}" y="${ys(md)-7}" text-anchor="middle" style="font-weight:600;fill:var(--ink)">กลาง ${fmt(md)}</text>`});
+rams.forEach((v,i)=>{const y=ys(mn1(v)),x=xs(i);s+=`<path data-k="${v}" d="M${x},${y-6}L${x+6},${y}L${x},${y+6}L${x-6},${y}Z" fill="var(--card)" stroke="var(--ink)" stroke-width="1.6" opacity="${S1==null||S1===v?1:.35}"><title>RAM ${v} GB ราคาเฉลี่ย ${fmt(mn1(v))}</title></path>`});
+$('q1').innerHTML=s+'</svg>';
+if(S1==null)$('i1').innerHTML=hint('คลิกที่คอลัมน์ขนาด RAM (หรือจุดใดก็ได้) เพื่อดูรายละเอียด');
+else{const rows=byRam[S1],st=stats(rows.map(r=>r[5])),i=rams.indexOf(S1),pv=i?rams[i-1]:null;
+$('i1').innerHTML=`<b>RAM ${S1} GB</b> · ${st.n} รุ่น · ราคากลาง <b>${fmt(st.md)}</b> · ราคาเฉลี่ย <b>${fmt(mn1(S1))}</b> · ช่วง ${fmt(st.min)}–${fmt(st.max)}`+(pv?` · แพงกว่า RAM ${pv} GB ${Math.round((st.md/md1(pv)-1)*100)}%`:'')+`<br><small>${modelLine(rows)}</small>`+(st.n<10?`<br><small>⚠ มีเพียง ${st.n} รุ่น ใช้ตีความด้วยความระมัดระวัง</small>`:'')+clr}}
+bind($('q1'),k=>{S1=+k===S1?null:+k;draw1()});bind($('i1'),()=>{S1=null;draw1()});draw1();
+const md=v=>md1(v);
+$('t1').textContent=`ราคากลางเพิ่มตาม RAM ชัดเจน: 4 GB ${fmt(md(4))} → 8 GB ${fmt(md(8))} → 16 GB ${fmt(md(16))} (16 GB แพงกว่า 8 GB ${Math.round((md(16)/md(8)-1)*100)}%)`;
+// ---------- Q2 + pie ----------
+const byT={};R.forEach(r=>(byT[r[1]]=byT[r[1]]||[]).push(r));
+const ti=Object.keys(byT).map(Number).sort((a,b)=>q(sorted(byT[a].map(r=>r[5])),.5)-q(sorted(byT[b].map(r=>r[5])),.5)),bh=40,H2=ti.length*bh+34,x2=v=>110+v/6200*570;
+const ord=[...ti].sort((a,b)=>byT[b].length-byT[a].length),cs=2*Math.PI*60,tot=R.length;
+function draw2(){
+const dim=k=>S2==null||S2===k?1:.3;
+let b=`<svg viewBox="0 0 700 ${H2}" role="img" aria-label="ช่วงราคาตามประเภท">`;
+for(let v=0;v<=6000;v+=2000)b+=`<line x1="${x2(v)}" x2="${x2(v)}" y1="0" y2="${H2-22}" stroke="var(--line)"/><text x="${x2(v)}" y="${H2-6}" text-anchor="middle">€${v}</text>`;
+ti.forEach((k,i)=>{const st=stats(byT[k].map(r=>r[5])),y=i*bh+20,on=S2===k;
+b+=`<rect data-k="${k}" tabindex="0" role="button" aria-label="ดูรายละเอียด ${T[k]}" class="hit" x="0" y="${y-19}" width="700" height="${bh-2}" fill="${on?'var(--b)':'transparent'}" fill-opacity="${on?.16:0}"/><g opacity="${dim(k)}"><text x="104" y="${y+4}" text-anchor="end" style="${on?'font-weight:600;fill:var(--ink)':''}">${T[k]} (${st.n})</text><line x1="${x2(st.min)}" x2="${x2(st.max)}" y1="${y}" y2="${y}" stroke="var(--mut)"/><rect x="${x2(st.q1)}" y="${y-10}" width="${x2(st.q3)-x2(st.q1)}" height="20" rx="3" fill="var(--a)" fill-opacity=".75"/><line x1="${x2(st.md)}" x2="${x2(st.md)}" y1="${y-12}" y2="${y+12}" stroke="var(--b)" stroke-width="3"/></g>`;
+if(on)b+=`<text x="${x2(st.md)}" y="${y-14}" text-anchor="middle" style="font-weight:600;fill:var(--ink)">กลาง ${fmt(st.md)}</text>`});
+$('q2').innerHTML=b+'</svg>';
+let off=0,p=`<svg viewBox="0 0 420 160" role="img" aria-label="สัดส่วนประเภท"><g transform="rotate(-90 80 80)">`;
+ord.forEach((k,i)=>{const f=byT[k].length/tot;p+=`<circle data-k="${k}" tabindex="0" role="button" aria-label="${T[k]}" cx="80" cy="80" r="60" fill="none" stroke="${col[i]}" stroke-width="${S2===k?38:32}" stroke-opacity="${dim(k)}" stroke-dasharray="${f*cs} ${cs}" stroke-dashoffset="${-off*cs}"/>`;off+=f});
+p+='</g>';ord.forEach((k,i)=>p+=`<rect data-k="${k}" x="170" y="${10+i*24}" width="245" height="22" fill="transparent"/><rect x="175" y="${14+i*24}" width="11" height="11" rx="2" fill="${col[i]}" opacity="${dim(k)}"/><text x="192" y="${24+i*24}" style="font-size:12px;${S2===k?'font-weight:600;fill:var(--ink)':''}" opacity="${dim(k)}">${T[k]} ${byT[k].length} รุ่น (${(byT[k].length/tot*100).toFixed(1)}%)</text>`);
+$('pie').innerHTML=p+'</svg>';
+if(S2==null)$('i2').innerHTML=hint('คลิกที่แถวใน Box Plot หรือชิ้นในกราฟวงกลม เพื่อดูรายละเอียดของประเภทนั้น');
+else{const rows=byT[S2],st=stats(rows.map(r=>r[5]));
+$('i2').innerHTML=`<b>${T[S2]}</b> · ${st.n} รุ่น (${(st.n/tot*100).toFixed(1)}%) · ราคากลาง <b>${fmt(st.md)}</b><br>รุ่นครึ่งกลางอยู่ที่ ${fmt(st.q1)}–${fmt(st.q3)} · ต่ำสุด–สูงสุด ${fmt(st.min)}–${fmt(st.max)}<br><small>${modelLine(rows)}</small>`+clr}}
+bind($('q2'),k=>{S2=+k===S2?null:+k;draw2()});bind($('pie'),k=>{S2=+k===S2?null:+k;draw2()});bind($('i2'),()=>{S2=null;draw2()});draw2();
+const mt=k=>q(sorted(byT[k].map(r=>r[5])),.5),nb=ti.find(k=>T[k]=='Notebook');
+$('t2').textContent=`Gaming (${fmt(mt(T.indexOf('Gaming')))}) และ Ultrabook (${fmt(mt(T.indexOf('Ultrabook')))}) ราคากลางสูงกว่า Notebook (${fmt(mt(nb))}) ราว 2 เท่า`;
+// ---------- Q3 ----------
+const g={};R.filter(r=>r[7]==1&&r[2]==8).forEach(r=>(g[r[0]]=g[r[0]]||[]).push(r));
+const brands=Object.entries(g).filter(([k,v])=>v.length>=5).map(([k,v])=>[+k,v]);
+const MET={md:['ราคากลาง',a=>q(sorted(a),.5)],mn:['ราคาเฉลี่ย',a=>a.reduce((s,x)=>s+x,0)/a.length],mx:['ราคาสูงสุด',a=>Math.max(...a)]};
+let M3='md';
+const pr3=e=>e[1].map(r=>r[5]);
+function draw3(){
+const bi=brands.map(e=>[e[0],e[1],MET[M3][1](pr3(e))]).sort((a,b)=>a[2]-b[2]),mx=Math.max(...bi.map(x=>x[2])),lab=MET[M3][0];
+$('m3').innerHTML='<span class="hint">วัดค่าด้วย:</span>'+Object.entries(MET).map(([k,[n]])=>`<button data-k="${k}" class="${k===M3?'on':''}" aria-pressed="${k===M3}">${n}</button>`).join('');
+$('q3').innerHTML=bi.map(([k,v,val],i)=>`<div class="row b ${S3===k?'on':''}" data-k="${k}" tabindex="0" role="button" aria-label="ดูรายละเอียด ${C[k]}" style="opacity:${S3==null||S3===k?1:.45}"><span>${C[k]} (${v.length})</span><span class="t"><i style="width:${val/mx*100}%;${i==0?'background:var(--ok)':''}"></i></span><em>${fmt(val)}</em></div>`).join('');
+if(S3==null)$('i3').innerHTML=hint('คลิกที่แท่งของแบรนด์ เพื่อดูรายละเอียดและส่วนต่างจากแบรนด์ที่ต่ำที่สุด');
+else{const e=bi.find(x=>x[0]===S3),a=e[1].map(r=>r[5]),st=stats(a),c0=bi[0],d=e[2]-c0[2];
+$('i3').innerHTML=`<b>${C[S3]}</b> · ${st.n} รุ่น (Core i5 + RAM 8 GB) · ${lab} <b>${fmt(e[2])}</b><br>ราคากลาง ${fmt(st.md)} · เฉลี่ย ${fmt(MET.mn[1](a))} · สูงสุด ${fmt(st.max)} · ต่ำสุด ${fmt(st.min)}<br>`+(S3===c0[0]?`<b>ต่ำที่สุดในกลุ่มนี้ (${lab})</b>`:`สูงกว่า ${C[c0[0]]} ${fmt(d)} (${Math.round(d/c0[2]*100)}%)`)+`<br><small>${modelLine(e[1])}</small>`+clr}
+$('t3').textContent=`ตามเกณฑ์${lab} สเปกเท่ากัน ${C[bi[0][0]]} ต่ำที่สุด (${fmt(bi[0][2])}) ส่วน ${C[bi[bi.length-1][0]]} สูงที่สุด (${fmt(bi[bi.length-1][2])}) ต่างกัน ${fmt(bi[bi.length-1][2]-bi[0][2])}`}
+bind($('q3'),k=>{S3=+k===S3?null:+k;draw3()});bind($('i3'),()=>{S3=null;draw3()});bind($('m3'),k=>{M3=k;draw3()});draw3();
+// Q4
+function rec(){const u=+$('u').value,B=+$('bg').value,lo=Math.round(B*.7);$('bv').textContent=fmt(B)+' (แสดงรุ่นราคา '+fmt(lo)+'–'+fmt(B)+')';
+const L=R.filter(r=>r[5]<=B&&r[5]>=lo&&(u==0?r[2]>=8&&T[r[1]]!='Gaming':u==1?r[2]>=16&&r[7]==2:T[r[1]]=='Gaming'&&r[2]>=8));
+const sc=r=>r[2]/8+r[7]+r[8]+(r[4]<1.6?.5:0),top=L.map(r=>[r,sc(r)/r[5]]).sort((a,b)=>b[1]-a[1]).slice(0,5);
+$('rec').innerHTML=top.length?top.map(([r],i)=>`<div class="rc ${i?'':'f'}">${i?'':'<small>คุ้มที่สุด</small>'}<b>${fmt(r[5])}</b>${C[r[0]]} ${P[r[6]]}<span>${T[r[1]]} · ${F[r[7]]}</span><span>RAM ${r[2]} GB · ${r[8]?'SSD':'HDD/Flash'} · ${r[4]} กก.</span></div>`).join(''):'<p>ไม่พบรุ่นที่ตรงเงื่อนไข ลองเพิ่มงบหรือเปลี่ยนการใช้งาน</p>'}
+$('u').onchange=rec;$('bg').oninput=rec;rec();
+(()=>{const r=document.documentElement,b=$('th');let s=null;try{s=localStorage.getItem('th')}catch(e){}
+r.dataset.theme=s||'dark';
+b.onclick=()=>{const n=r.dataset.theme=='dark'?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('th',n)}catch(e){}};
+const go=e=>{const a=e.target.closest('[data-t]');if(a)$(a.dataset.t).scrollIntoView({behavior:'smooth',block:'start'})};
+const nv=document.querySelector('.nav');nv.addEventListener('click',go);nv.addEventListener('keydown',e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();go(e)}})})();
+</script>
+</body>
+</html>
